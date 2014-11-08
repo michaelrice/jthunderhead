@@ -71,6 +71,11 @@ public class Connection {
     private int port = 8443;
 
     /**
+     * Content-Type for connection
+     */
+    private static String contentType = "text/xml";
+
+    /**
      * Logger
      */
     private Logger log = Logger.getLogger(Connection.class);
@@ -96,6 +101,14 @@ public class Connection {
         this.command = command;
         this.ignoreSSL = ignoreSSL;
         this.port = port;
+    }
+
+    public static String getContentType() {
+        return contentType;
+    }
+
+    public static void setContentType(String contentType) {
+        Connection.contentType = contentType;
     }
 
     public String getToken() {
@@ -180,6 +193,13 @@ public class Connection {
         }
     }
 
+    /**
+     * Builds a java.net.URL from the info contained in this class.
+     *
+     * @return URL
+     * @throws MalformedURLException
+     * @throws MissingPropertyException
+     */
     public URL buildUrl() throws MalformedURLException, MissingPropertyException {
         checkRequiredProperties();
         StringBuilder url = new StringBuilder();
