@@ -13,9 +13,9 @@ public class BuilderTest {
     public void testBuildVcenter() throws Exception {
         Vcentner vcentner = new Vcentner("root", "password", "vc00.home.local");
         Builder builder = new Builder();
-        String vcPayload = builder.buildVcenter(vcentner);
+        String actualPayload = builder.buildVcenter(vcentner);
         String expectedPayload = "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<vcServer xmlns=\"http://www.vmware.com/UM\"><hostname>vc00.home.local</hostname><username>root</username><password>password</password></vcServer>";
-        assert vcPayload.equals(expectedPayload);
+        assertEquals(expectedPayload, actualPayload);
     }
 
     @Test
